@@ -19,7 +19,6 @@ def migrate_profiles(apps, schema_editor):
         new_profile.save()
 
 
-
 class Migration(migrations.Migration):
 
     dependencies = [

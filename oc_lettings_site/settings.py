@@ -23,7 +23,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Application definition
 
 INSTALLED_APPS = [
-    'oc_lettings_site.apps.OCLettingsSiteConfig',
     'lettings.apps.LettingsConfig',
     'profiles.apps.ProfilesConfig',
     'django.contrib.admin',
