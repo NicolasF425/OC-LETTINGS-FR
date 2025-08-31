@@ -11,8 +11,6 @@ def index(request):
     return render(request, 'lettings/index.html', context)
 
 
-# Suspendisse porta dui eget sem accumsan interdum. Ut quis urna pellentesque justo mattis ullamcorper ac non tellus.
-# In tristique mauris eu velit fermentum, tempus pharetra est luctus.
 def letting(request, letting_id):
     """
     View for a letting
