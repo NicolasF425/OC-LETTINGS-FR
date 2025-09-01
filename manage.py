@@ -1,5 +1,18 @@
 import os
 import sys
+from dotenv import load_dotenv
+import sentry_sdk
+
+
+load_dotenv()  # Charge automatiquement le fichier .env
+
+sentry_sdk.init(
+    dsn=os.getenv("dsn"),
+    # Add data like request headers and IP for users,
+    # see https://docs.sentry.io/platforms/python/data-management/data-collected/ for more info
+    traces_sample_rate=1.0,  # Active la collecte de performance (1.0 = 100% des traces)
+    send_default_pii=True,
+)
 
 
 def main():
