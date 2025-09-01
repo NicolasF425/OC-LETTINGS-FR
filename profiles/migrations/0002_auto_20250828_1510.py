@@ -3,6 +3,7 @@
 from django.db import migrations
 
 
+'''
 def migrate_profiles(apps, schema_editor):
     # Ancien modèle
     OldProfile = apps.get_model('oc_lettings_site', 'Profile')
@@ -17,6 +18,10 @@ def migrate_profiles(apps, schema_editor):
             favorite_city=old_profile.favorite_city
         )
         new_profile.save()
+'''
+
+def noop(apps, schema_editor):
+    pass
 
 
 class Migration(migrations.Migration):
@@ -26,5 +31,6 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RunPython(migrate_profiles),
+        # migrations.RunPython(migrate_profiles),
+        migrations.RunPython(noop),
     ]

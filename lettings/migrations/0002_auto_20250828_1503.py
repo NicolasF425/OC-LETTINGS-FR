@@ -2,7 +2,7 @@
 
 from django.db import migrations
 
-
+'''
 def migrate_data(apps, schema_editor):
     # Anciens modèles
     OldAddress = apps.get_model('oc_lettings_site', 'Address')
@@ -36,7 +36,10 @@ def migrate_data(apps, schema_editor):
             address=new_address
         )
         new_letting.save()
+'''
 
+def noop(apps, schema_editor):
+    pass
 
 
 class Migration(migrations.Migration):
@@ -46,5 +49,6 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RunPython(migrate_data),
+        # migrations.RunPython(migrate_data),
+        migrations.RunPython(noop),
     ]

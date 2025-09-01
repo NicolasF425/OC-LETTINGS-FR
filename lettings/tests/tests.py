@@ -70,41 +70,36 @@ class ViewsTest(TestCase):
         self.letting = Letting.objects.create(title="Bel appartement", address=self.address)
 
     def test_index_view(self):
-        response = self.client.get(reverse("lettings_index"))
+        response = self.client.get(reverse("lettings:index"))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "lettings/index.html")
         self.assertContains(response, "Bel appartement")
 
     def test_index_view_lettings_list_not_empty(self):
-        response = self.client.get(reverse("lettings_index"))
+        response = self.client.get(reverse("lettings:index"))
         lettings_list = response.context["lettings_list"]
         self.assertTrue(len(lettings_list) > 0)
         self.assertIn(self.letting, lettings_list)
 
     def test_index_view_lettings_list_empty(self):
         Letting.objects.all().delete()
-        response = self.client.get(reverse("lettings_index"))
+        response = self.client.get(reverse("lettings:index"))
         lettings_list = response.context["lettings_list"]
         self.assertEqual(len(lettings_list), 0)
 
     def test_letting_view_success(self):
-        url = reverse("lettings:letting", args=[self.letting.pk])  # pk au lieu de id
+        url = reverse("lettings:letting", args=[self.letting.pk])
         response = self.client.get(url)
-
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "lettings/letting.html")
-
-        # Vérifie le contexte
         self.assertEqual(response.context["title"], "Bel appartement")
         self.assertEqual(response.context["address"], self.address)
-
-        # Vérifie le rendu HTML
         self.assertContains(response, "Bel appartement")
         self.assertContains(response, "99 Boulevard Voltaire")
         self.assertContains(response, "Paris, FR 75011")
         self.assertContains(response, "FRA")
 
     def test_letting_view_not_found(self):
-        url = reverse("lettings:letting", args=[999])  # id inexistant
+        url = reverse("lettings:letting", args=[999])
         response = self.client.get(url)
         self.assertEqual(response.status_code, 404)
