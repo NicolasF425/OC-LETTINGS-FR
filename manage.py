@@ -1,13 +1,28 @@
 import os
 import sys
 from dotenv import load_dotenv
+import django.db.models.signals
 import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
 
 
 load_dotenv()  # Charge automatiquement le fichier .env
 
 sentry_sdk.init(
     dsn=os.getenv("dsn"),
+    integrations=[
+        DjangoIntegration(
+            transaction_style='url',
+            middleware_spans=True,
+            signals_spans=True,
+            signals_denylist=[
+                django.db.models.signals.pre_init,
+                django.db.models.signals.post_init,
+            ],
+            cache_spans=False,
+            http_methods_to_capture=("GET",),
+        ),
+    ],
     # Add data like request headers and IP for users,
     # see https://docs.sentry.io/platforms/python/data-management/data-collected/ for more info
     traces_sample_rate=1.0,  # Active la collecte de performance (1.0 = 100% des traces)

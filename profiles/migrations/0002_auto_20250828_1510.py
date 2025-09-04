@@ -3,6 +3,7 @@
 from django.db import migrations
 
 
+# mise en commentaire pour passer les tests
 '''
 def migrate_profiles(apps, schema_editor):
     # Ancien modèle
