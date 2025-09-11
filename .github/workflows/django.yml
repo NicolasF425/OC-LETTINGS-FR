@@ -46,8 +46,8 @@ jobs:
           context: .
           push: true
           tags: |
-            docker.io/${{ secrets.DOCKER_USERNAME }}/monapp:latest
-            docker.io/${{ secrets.DOCKER_USERNAME }}/monapp:${{ github.sha }}
+            docker.io/${{ secrets.DOCKER_USERNAME }}/oclettings:latest
+            docker.io/${{ secrets.DOCKER_USERNAME }}/oclettings:${{ github.sha }}
 
   deploy:
     runs-on: ubuntu-latest
