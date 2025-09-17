@@ -1,16 +1,59 @@
 import os
 from pathlib import Path
+from dotenv import load_dotenv
+import django.db.models.signals
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+load_dotenv()  # load the .env file
+
+SECRET_KEY = os.getenv("SECRET_KEY")
+
+
+sentry_sdk.init(
+    dsn=os.getenv("dsn"),
+    integrations=[
+        DjangoIntegration()],
+    traces_sample_rate=1.0,  # Active la collecte de performance (1.0 = 100% des traces)
+    send_default_pii=True,
+)
+
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,  # garde les loggers Django
+    "handlers": {
+        "sentry": {
+            "level": "INFO",  # capture tout depuis INFO jusqu’à CRITICAL
+            "class": "sentry_sdk.integrations.logging.EventHandler",
+        },
+    },
+    "root": {  # logger global
+        "level": "INFO",
+        "handlers": ["sentry"],
+    },
+    "loggers": {
+        "django": {  # logs Django envoyés à Sentry
+            "level": "ERROR",
+            "handlers": ["sentry"],
+            "propagate": False,
+        },
+        "myapp": {  # remplace "myapp" par ton nom d’app
+            "level": "DEBUG",  # envoie debug/info/warning/error
+            "handlers": ["sentry"],
+            "propagate": False,
+        },
+    },
+}
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'fp$9^593hsriajg$_%=5trot9g!1qa@ew(o-1#@=&4%=hp46(s'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
