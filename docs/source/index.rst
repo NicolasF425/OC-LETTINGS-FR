@@ -16,7 +16,4 @@ documentation for details.
    :caption: Contents:
 
    description
-   lettings
-   profiles
-   oc_lettings_site
-   manage
+   structure

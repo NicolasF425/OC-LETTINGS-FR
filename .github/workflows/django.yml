@@ -11,6 +11,9 @@ jobs:
       matrix:
         python-version: [3.12]
 
+    env:   # SECRET_KEY depuis GitHub Secrets
+      SECRET_KEY: ${{ secrets.SECRET_KEY }}
+
     steps:
       - uses: actions/checkout@v4
 
