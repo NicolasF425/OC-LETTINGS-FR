@@ -32,7 +32,7 @@ LOGGING = {
         },
     },
     "root": {  # logger global
-        "level": "INFO",
+        "level": "WARNING",
         "handlers": ["sentry"],
     },
     "loggers": {
@@ -41,7 +41,7 @@ LOGGING = {
             "handlers": ["sentry"],
             "propagate": False,
         },
-        "myapp": {  # remplace "myapp" par ton nom d’app
+        "oc_lettings_site": {
             "level": "DEBUG",  # envoie debug/info/warning/error
             "handlers": ["sentry"],
             "propagate": False,

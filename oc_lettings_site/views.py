@@ -12,7 +12,9 @@ def custom_404_view(request, exception):
     """
     Custom view for the 404 error
     """
-    return render(request, '404.html', status=404)
+    import sentry_sdk
+    sentry_sdk.capture_message(f"Page not found: {request.path}", level="warning")
+    return render(request, "404.html", status=404)
 
 
 def custom_500_view(request):
