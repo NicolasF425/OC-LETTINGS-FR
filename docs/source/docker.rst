@@ -2,6 +2,9 @@ Docker use
 ==========
 
 
+With command line :
+
+
 Retreiving lastest docker image for the project:
 
 docker pull
