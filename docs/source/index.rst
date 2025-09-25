@@ -18,3 +18,5 @@ documentation for details.
    description
    structure
    models
+   workflow
+   docker
