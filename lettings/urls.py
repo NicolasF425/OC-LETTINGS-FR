@@ -1,3 +1,9 @@
+"""
+lettings/urls.py
+Urls for the lettings app
+include custom errors 404 and 500 managing
+"""
+
 from django.urls import path
 from lettings import views as lw
 

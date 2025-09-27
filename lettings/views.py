@@ -1,3 +1,8 @@
+"""
+lettings/views.py
+Views file for the lettings app
+"""
+
 import logging
 import sentry_sdk
 from django.shortcuts import render, get_object_or_404

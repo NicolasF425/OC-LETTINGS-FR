@@ -1,3 +1,9 @@
+"""
+lettings/models.py
+Classes file for the lettings app
+"""
+
+
 from django.db import models
 from django.core.validators import MaxValueValidator, MinLengthValidator
 

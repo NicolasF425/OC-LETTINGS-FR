@@ -1,3 +1,8 @@
+"""
+profiles/views.py
+Views file for the profile app
+"""
+
 from django.shortcuts import render, get_object_or_404
 from profiles.models import Profile
 import logging
@@ -11,7 +16,7 @@ def index(request):
     """
     List view for profiles
     """
-    try: 
+    try:
         profiles_list = Profile.objects.all()
         context = {'profiles_list': profiles_list}
         return render(request, 'profiles/index.html', context)

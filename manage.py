@@ -1,3 +1,8 @@
+"""
+manage.py
+Entry point for the project
+"""
+
 import os
 import sys
 

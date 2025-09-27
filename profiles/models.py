@@ -1,3 +1,8 @@
+"""
+profiles/models.py
+Models file for the profile app
+"""
+
 from django.db import models
 from django.contrib.auth.models import User
 

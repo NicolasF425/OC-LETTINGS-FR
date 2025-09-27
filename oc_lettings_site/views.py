@@ -1,3 +1,8 @@
+"""
+oc_lettings_site/views.py
+Index and custom views for errors 404 and 500
+"""
+
 from django.shortcuts import render
 
 
