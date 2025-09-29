@@ -1,6 +1,11 @@
 ## Résumé
 
+Projet 13 de la formation Python OppenClassrooms
 Site web d'Orange County Lettings
+
+Objectifs principaux:
+- séparer l'application en 2 applications ditinctes
+- déployer l'application (Docker et Render dans ce cas précis)
 
 ## Développement local
 
@@ -69,7 +74,7 @@ Dans le reste de la documentation sur le développement local, il est supposé q
 - Aller sur `http://localhost:8000/admin`
 - Connectez-vous avec l'utilisateur `admin`, mot de passe `Abc1234!`
 
-### Windows
+### Windows Powershell
 
 Utilisation de PowerShell, comme ci-dessus sauf :
 
