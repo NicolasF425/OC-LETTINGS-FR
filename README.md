@@ -4,8 +4,9 @@ Projet 13 de la formation Python OppenClassrooms
 Site web d'Orange County Lettings
 
 Objectifs principaux:
-- séparer l'application en 2 applications ditinctes
-- déployer l'application (Docker et Render dans ce cas précis)
+- séparer l'application en 2 applications distinctes
+- ajouter des docstrings et des tests
+- déployer l'application (Docker, et Render dans ce cas précis)
 
 ## Développement local
 
