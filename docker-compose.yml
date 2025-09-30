@@ -9,3 +9,5 @@ services:
       - .:/app
     environment:
       - DJANGO_SETTINGS_MODULE=oc_lettings_site.settings
+    env_file:
+      - .env
