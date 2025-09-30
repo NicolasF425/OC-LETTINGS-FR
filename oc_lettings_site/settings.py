@@ -3,14 +3,25 @@ from pathlib import Path
 from dotenv import load_dotenv
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
+from django.core.exceptions import ImproperlyConfigured
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-load_dotenv(override=False)
+load_dotenv(BASE_DIR / ".env", override=False)
 
-SECRET_KEY = os.environ.get("SECRET_KEY")
+
+def get_env_variable(var_name: str) -> str:
+    """Récupère une variable d'environnement ou plante avec une erreur claire."""
+    try:
+        return os.environ[var_name]
+    except KeyError:
+        raise ImproperlyConfigured(f"La variable d'environnement {var_name} est manquante")
+
+
+# Django SECRET_KEY
+SECRET_KEY = get_env_variable("SECRET_KEY")
 
 
 sentry_sdk.init(
