@@ -15,13 +15,14 @@ Need folowingsecrets in github (Setting -> Secrets and variables -> Actions then
 job 1 : build
 -------------
 
-Test the code to be build on Docker
+Build an environnement
+Test the code
 
 
 job 2 : Docker
 --------------
 
-Create Docker image ang push on dockerhub
+Create Docker image and push on dockerhub
 
 
 job 3 : deployment on Render
