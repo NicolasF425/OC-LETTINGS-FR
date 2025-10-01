@@ -11,7 +11,7 @@ Objectives
 - Understand the separation of concerns between different *apps*.
 - Produce documentation with **Sphinx**.
 - Deploy a Docker image.
-- Deply image on cloud (**render** in this case)
+- Deploy the image on cloud (**render** in this case)
 
 Technologies Used
 -----------------
