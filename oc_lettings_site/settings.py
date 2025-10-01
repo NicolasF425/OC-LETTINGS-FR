@@ -35,26 +35,34 @@ sentry_sdk.init(
 
 LOGGING = {
     "version": 1,
-    "disable_existing_loggers": False,  # garde les loggers Django
+    "disable_existing_loggers": False,
     "handlers": {
         "sentry": {
-            "level": "INFO",  # capture tout depuis INFO jusqu’à CRITICAL
+            "level": "INFO",
             "class": "sentry_sdk.integrations.logging.EventHandler",
         },
+        "console": {  # utile pour debug local
+            "class": "logging.StreamHandler",
+        },
     },
-    "root": {  # logger global
+    "root": {
         "level": "WARNING",
-        "handlers": ["sentry"],
+        "handlers": ["sentry", "console"],
     },
     "loggers": {
-        "django": {  # logs Django envoyés à Sentry
+        "django": {
             "level": "ERROR",
-            "handlers": ["sentry"],
+            "handlers": ["sentry", "console"],
             "propagate": False,
         },
         "oc_lettings_site": {
-            "level": "DEBUG",  # envoie debug/info/warning/error
-            "handlers": ["sentry"],
+            "level": "DEBUG",
+            "handlers": ["sentry", "console"],
+            "propagate": False,
+        },
+        "lettings": {   # <---- ajoute ça
+            "level": "DEBUG",
+            "handlers": ["sentry", "console"],
             "propagate": False,
         },
     },
