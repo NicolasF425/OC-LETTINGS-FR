@@ -82,3 +82,13 @@ Utilisation de PowerShell, comme ci-dessus sauf :
 
 - Pour activer l'environnement virtuel, `.\venv\Scripts\Activate.ps1` 
 - Remplacer `which <my-command>` par `(Get-Command <my-command>).Path`
+
+### CI/CD
+
+Le fichier .github/workflows/django.yml permet l'exécution des actions suivantes lors du commit sur github ou du push en local :
+
+- Création de l'image Docker puis le déploiement sur Render.
+- Génération de la documentation Readthedocs à partir des fichiers rst du projet.
+
+Il faut pour cela disposer d'un compte sur Dockerhub, sur Render et sur Readthedocs.
+
