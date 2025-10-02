@@ -5,7 +5,7 @@ Site web d'Orange County Lettings
 
 Objectifs principaux:
 - séparer l'application en 2 applications distinctes
-- ajouter des docstrings et des tests
+- corriger le linting, ajouter des docstrings et des tests
 - déployer l'application (Docker, et Render dans ce cas précis)
 - créer une documentation readthedocs : https://oc-lettings-fr-doc.readthedocs.io/en/latest/
 
